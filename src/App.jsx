@@ -10,7 +10,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Population></Population>
+          <select>
+            <option value='foo'>Foo</option>
+            <option value='bar'>Bar</option>
+          </select>
+          <Population />
         </header>
       </div>
     );

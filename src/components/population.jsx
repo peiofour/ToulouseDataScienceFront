@@ -5,14 +5,19 @@ export default class Population extends Component {
   constructor(props){
     super(props);
     this.state = {
-      testName: ""
+      test: []
     }
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
     axios.get('https://datascience-tls.scalingo.io/population')
-      .then(response => this.setState({testName: response.data[0].Quartier}))
+      .then(response => this.setState({test: response.data}))
+  }
+
+  ListCities(){
+    const list = this.state.test.map((quartier)=> <li>{quartier.Quartier}</li>)
+    return list;
   }
 
   render(){
@@ -21,7 +26,9 @@ export default class Population extends Component {
         <button className="button" onClick={this.handleClick}>
           Clique
         </button>
-        <p>{this.state.testName}</p>
+        <ul>
+          {this.ListCities()}
+        </ul>
       </div>
     )
   }
