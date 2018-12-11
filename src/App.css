@@ -1,16 +1,13 @@
-.App {
-  text-align: center;
+body{
   background-color: whitesmoke;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.App {
+  text-align: center;
 }
 
 .App-header {
-  padding-top: 30px;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,4 +16,34 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.Nav{
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.Nav-list {
+  list-style: none;
+  text-align: center;
+}
+
+.Nav-item {
+  display: inline-block;
+  position: relative;
+  border: 0;
+  padding: 0;
+}
+
+.Nav-item a {
+  text-decoration: none;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+}
+
+.Nav-item a:hover:not(active){
+  background-color: darkgray;
 }

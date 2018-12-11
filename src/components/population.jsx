@@ -33,7 +33,7 @@ export default class Population extends Component {
           label: 'Population moyenne par quartier',
           backgroundColor: 'rgba(255,99,132,0.2)',
           borderColor: 'rgba(255,99,132,1)',
-          borderWidth: 1,
+          borderWidth: 0.5,
           hoverBackgroundColor: 'rgba(255,99,132,0.4)',
           hoverBorderColor: 'rgba(255,99,132,1)',
           data: this.state.pop
@@ -48,11 +48,11 @@ export default class Population extends Component {
         </button>
           <Bar 
             data={ data } 
-            width={1700}
             height= {500}
-            options={{
-                  maintainAspectRatio: false
-            }}
+            options=
+            {{
+              maintainAspectRatio: false
+              }}
           />
       </div>
     )

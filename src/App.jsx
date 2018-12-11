@@ -8,7 +8,7 @@ class App extends Component {
   home(){
     return(
       <div>
-        <p>Welcome home</p>
+        <p>Welcome</p>
       </div>
     )
   }
@@ -17,17 +17,21 @@ class App extends Component {
       <Router>
         <div className="App">
           <header className="App-header">
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/population">Population</Link>
-              </li>
-            </ul>
+            <nav className="Nav">
+              <ul className="Nav-list">
+                <li className="Nav-item">
+                  <Link classname="link" to="/">Home</Link>
+                </li>
+                <li className="Nav-item">
+                  <Link className="link" to="/population">Population</Link>
+                </li>
+              </ul>
+            </nav>
+          </header>
+          <main>
             <Route exact path="/" component={ this.home } />
             <Route path="/population" component={ Population } />
-          </header>
+          </main>
         </div>
       </Router>
     );
