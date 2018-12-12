@@ -19,7 +19,7 @@ class App extends Component {
             <nav className="Nav">
               <ul className="Nav-list">
                 <li className="Nav-item">
-                  <Link classname="link" to="/">Home</Link>
+                  <Link className="link" to="/">Home</Link>
                 </li>
                 <li className="Nav-item">
                   <Link className="link" to="/population">Population</Link>
