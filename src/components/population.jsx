@@ -6,7 +6,7 @@ export default class Population extends Component {
   constructor(props){
     super(props);
     this.state = {
-      pop: [],
+      populationMoyenne: [],
       quartiers: []
     }
     this.PopMoyQuartierClick = this.PopMoyQuartierClick.bind(this);
@@ -15,11 +15,9 @@ export default class Population extends Component {
   PopMoyQuartierClick() {
     axios.get('https://datascience-tls.scalingo.io/population')
       .then(response => {
-        let popmoyen = response.data.map(foo => foo.MoyennePop)
-        let quartierfoo = response.data.map(bar => bar.Quartier)
         this.setState({
-          pop : popmoyen,
-          quartiers : quartierfoo
+          populationMoyenne : response.data.map(foo => foo.MoyennePop),
+          quartiers : response.data.map(bar => bar.Quartier)
         })
       })
   }
@@ -36,7 +34,7 @@ export default class Population extends Component {
           borderWidth: 0.5,
           hoverBackgroundColor: 'rgba(255,99,132,0.4)',
           hoverBorderColor: 'rgba(255,99,132,1)',
-          data: this.state.pop
+          data: this.state.populationMoyenne
         }
       ]
     };
