@@ -9,10 +9,10 @@ export default class Population extends Component {
       pop: [],
       quartiers: []
     }
-    this.handleClick = this.handleClick.bind(this);
+    this.PopMoyQuartierClick = this.PopMoyQuartierClick.bind(this);
   }
 
-  handleClick() {
+  PopMoyQuartierClick() {
     axios.get('https://datascience-tls.scalingo.io/population')
       .then(response => {
         let popmoyen = response.data.map(foo => foo.MoyennePop)
@@ -43,7 +43,7 @@ export default class Population extends Component {
 
     return(
       <div className="button-container">
-        <button className="button" onClick={this.handleClick}>
+        <button className="button" onClick={this.PopMoyQuartierClick}>
           Clique
         </button>
           <Bar 
