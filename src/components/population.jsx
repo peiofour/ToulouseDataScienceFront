@@ -6,10 +6,10 @@ export default class Population extends Component {
   constructor(props){
     super(props);
     this.state = {
+      Population_year: [],
+
       populationMoyenne: [],
       quartiersMoy: [],
-      quartiersTend: [],
-      tendancePopYear: [],
       year: "2011"
     }
     this.PopMoyQuartierClick = this.PopMoyQuartierClick.bind(this);
@@ -36,10 +36,11 @@ export default class Population extends Component {
     axios.get(`https://datascience-tls.scalingo.io/population-year?year=${this.state.year}`)
     .then(response => {
       this.setState({
-        tendancePopYear : response.data.map(res => res.population),
-        quartiersTend : response.data.map(res => res.quartier)
-      })
-    })
+        Population_year : (response.data.map((res) => {
+          return {quartier: res.quartier, population: res.population}
+        })).sort((a, b) => (a.quartier).localeCompare(b.quartier))
+      });
+    });
     event.preventDefault();
   }
 
@@ -59,17 +60,17 @@ export default class Population extends Component {
       ]
     };
 
-    let dataPopTend = {
-      labels: this.state.quartiersTend,
+    let dataPopbyYear = {
+      labels: this.state.Population_year.map(res => res.quartier),
       datasets: [
         {
           label: 'Population moyenne par quartier',
           backgroundColor: 'rgba(255,99,132,0.2)',
           borderColor: 'rgba(255,99,132,1)',
-          borderWidth: 0.5,
+          borderWidth: 1,
           hoverBackgroundColor: 'rgba(255,99,132,0.4)',
           hoverBorderColor: 'rgba(255,99,132,1)',
-          data: this.state.tendancePopYear
+          data: this.state.Population_year.map(res => res.population)
         }
       ]
     }
@@ -105,8 +106,8 @@ export default class Population extends Component {
               <input type="submit" value="Submit" />
             </form>
             <Bar 
-            data={dataPopTend} 
-            height= {500}
+            data={dataPopbyYear} 
+            height= {600}
             options=
             {{
               maintainAspectRatio: false
